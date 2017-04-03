@@ -1,0 +1,11 @@
+version: '2'
+services:
+    testrpc:
+        image: desmart/testrpc:latest
+        ports:
+            - "8545:8545"
+
+    truffle:
+        image: desmart/truffle:3.2
+        volumes:
+            - ".:/usr/src/app"

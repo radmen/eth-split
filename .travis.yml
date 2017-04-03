@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+    - docker
+
+script:
+    - docker-compose run --rm truffle install
+    - docker-compose up -d testrpc
+    - sleep 10
+    - docker-compose run --rm truffle test
