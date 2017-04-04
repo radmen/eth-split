@@ -1,12 +1,12 @@
 # eth-split
 
-Semi-automatic contract which splits received ETH equally to declared shareholders.
+Semi-automatic contract which splits received ether equally to declared shareholders.
 
 # foreword
 
-I was asked to create a contract which would automatically split received ETH from mining pools to declared shareholders.
+I was asked to create a contract which would automatically split received ether from mining pools to declared shareholders.
 
-Mining pools tend do set low gas limit during ether payout so it turned out that this contract should only receive transfer. Payout to shareholders has to be triggered manually (using `payout()` method).
+Mining pools tend do set low gas limit for transactions so it turned out that this contract should only receive transfer. Payout to shareholders has to be triggered manually (using `payout()` method).
 
 # development
 
@@ -27,6 +27,12 @@ docker-compose run --rm truffle install
 ```
 docker-compose up -d testrpc
 docker-compose run --rm truffle test
+```
+
+After longer development (and test runs) it may turn out that `coinbase` set in TestRPC may run out of ether which will fail tests. If this happens TestRPC server has to be restarted.
+
+```
+docker-compose restart testrpc
 ```
 
 # contract deployment
