@@ -10,7 +10,7 @@ Mining pools tend do set low gas limit for transactions so it turned out that th
 
 # development
 
-Required software:
+## required software:
 
 * [truffle](https://github.com/trufflesuite/truffle) 
 * [TestRPC](https://github.com/ethereumjs/testrpc)
