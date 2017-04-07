@@ -35,6 +35,23 @@ After longer development (and test runs) it may turn out that `coinbase` set in 
 docker-compose restart testrpc
 ```
 
+## building README file
+
+When contract is changed `README` file should be updated.  
+I've created a simple PHP build tool which will use README template and pass to it information about compiled contract.
+
+To use it, simply, run `make docs`. This command requires `docker` and `docker-compose` to be installed.
+
+If you don't want to use `docker` you can compile README with this commands:
+
+```
+solc --combined-json "abi,bin" zeppelin/SafeMath.sol=/usr/src/app/installed_contracts/zeppelin/contracts/SafeMath.sol --optimize contracts/EthSplit.sol > build/solc.json
+
+php docs/build.php > README.md
+```
+
+Note: you will need to install `solc` compiler and `PHP` (>= 7.0).
+
 # contract
 ## interface
 
