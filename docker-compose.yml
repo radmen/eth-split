@@ -9,3 +9,24 @@ services:
         image: desmart/truffle:3.2
         volumes:
             - ".:/usr/src/app"
+
+    compile:
+        image: ethereum/solc:stable
+        volumes:
+            - ".:/usr/src/app:ro"
+        working_dir: /usr/src/app
+        command:
+            - solc
+            - --combined-json
+            - "abi,bin"
+            - zeppelin/SafeMath.sol=/usr/src/app/installed_contracts/zeppelin/contracts/SafeMath.sol
+            - --optimize
+            - contracts/EthSplit.sol
+            
+    docs:
+        image: desmart/php:7.0-alpine
+        volumes:
+            - ".:/usr/src/app:ro"
+        command:
+            - php
+            - docs/build.php
