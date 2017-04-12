@@ -90,19 +90,41 @@ const contract = web3.eth.contract(<?php echo $abi; ?>);
 contract.new(shareholdersList, donateTo, {
     from: web3.eth.accounts[0],
     gas: '4700000',
-    data '0x<?php echo $bin; ?>'
+    data: '0x<?php echo $bin; ?>'
 }, (e, contract) => {
     console.log(e, contract);
-    if (typeof contract.address !== 'undefined') {
+    if (contract && typeof contract.address !== 'undefined') {
          console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
     }
 });
 ```
 
+# usage
+
+Deployed contract is able to do two things:
+
+1. receive ether transfers
+2. payout stored ether to defined shareholders (via `payout()` method)
+
+## selfdestruct
+
+Currently contract does not support selfdestructing.
+
+## security considerations
+
+This contract is not secured in any way. It doesn't have to. 
+
+* shareholders list can't be changed
+* triggering `payout()` will give no benefit for someone who is not defined in shareholders list
+
 # donate
 
-If you feel an urge to share some ether with me you can do it by setting `donateTo` contructor argument.  
-Simply, pass, address to my wallet (`<?php echo $donateAddress; ?>`). Every time you make a payout I'll receive 0,1% of that transfer.
+If you're happy with my work feel free to donate me with some ether (`<?php echo $donateAddress; ?>`) :)
+
+## automatic donation
+
+If you're **very** happy with my work you can set `donateTo` constructor argument during contract deployment.  
+Every time you make a payout I'll receive 0.1% of that transfer.
 
 ```js
 const shareholdersList = [
@@ -115,10 +137,10 @@ const contract = web3.eth.contract(<?php echo $abi; ?>);
 contract.new(shareholdersList, donateTo, {
     from: web3.eth.accounts[0],
     gas: '4700000',
-    data '0x<?php echo $bin; ?>'
+    data: '0x<?php echo $bin; ?>'
 }, (e, contract) => {
     console.log(e, contract);
-    if (typeof contract.address !== 'undefined') {
+    if (contract && typeof contract.address !== 'undefined') {
          console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
     }
 });

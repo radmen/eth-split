@@ -24,7 +24,7 @@ $contractData = array_merge(
             json_decode($data['contracts']['contracts/EthSplit.sol:EthSplit']['abi']),
             JSON_PRETTY_PRINT
         ),
-        'donateAddress' => 'WIP: 0x0',
+        'donateAddress' => '0x4a03ec5e48de60048d8fd5e004b443db51d9f0f5',
     ]
 );
 
