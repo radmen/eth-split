@@ -149,14 +149,16 @@ This contract is not secured in any way. It doesn't have to.
 * shareholders list can't be changed
 * triggering `payout()` will give no benefit for someone who is not defined in shareholders list
 
-# donate
+~~# donate~~
 
-If you're happy with my work feel free to donate me with some ether (`0x4a03ec5e48de60048d8fd5e004b443db51d9f0f5`) :)
+~~If you're happy with my work feel free to donate me with some ether (`0x4a03ec5e48de60048d8fd5e004b443db51d9f0f5`) :)~~
 
 ## automatic donation
 
+**Update**: please don't follow those instructions - I don't own the wallet anymore.
+
 If you're **very** happy with my work you can set `donateTo` constructor argument during contract deployment.  
-Every time you make a payout I'll receive 0.1% of that transfer.
+Every time you make a payout I'll receive 0.1% of that transfer.~~
 
 ```js
 const shareholdersList = [
